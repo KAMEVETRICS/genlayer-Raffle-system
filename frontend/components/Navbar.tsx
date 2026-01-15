@@ -86,11 +86,15 @@ export function Navbar() {
               style={{ height: `${headerHeight}px` }}
             >
               {/* Left: Logo */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 {/* Show mark only on mobile, full logo on desktop */}
-                <LogoMark size="md" className="flex md:hidden" />
-                <Logo size="md" className="hidden md:flex" />
-                <span className="text-lg md:text-xl font-bold ml-2">Raffle System</span>
+                <div className="md:hidden">
+                  <LogoMark size="md" />
+                </div>
+                <div className="hidden md:block">
+                  <Logo size="md" />
+                </div>
+                <span className="text-base md:text-xl font-bold">Raffle</span>
               </div>
 
               {/* Center: Stats */}
