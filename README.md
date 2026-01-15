@@ -60,37 +60,17 @@ This project includes the boilerplate code for a GenLayer use case implementatio
 
 ## ⚽ How the Football Bets Contract Works
 
-The Football Bets contract allows users to create bets for football matches, resolve those bets, and earn points for correct bets. Here's a breakdown of its main functionalities:
+The Raffle system allows You create or participate in a raffle with preset criterias. Raffle contract allows users to create/particpate in raffles, resolves those raffles, and get rewarded. Here's a breakdown of its main functionalities:
 
-1. Creating Bets:
-   - Users can create a bet for a specific football match by providing the game date, team names, and their predicted winner.
-   - The contract checks if the game has already finished and if the user has already made a bet for this match.
+1. Creating Raffles:
+   - Users can create a Raffle with certain guidelines or conditions and declare a price pool for winners.
+   - The contract checks if terms and when stipulated time for raffle expires.
 
-2. Resolving Bets:
-   - After a match has concluded, users can resolve their bets.
-   - The contract fetches the actual match result from a specified URL.
-   - If the Bet was correct, the user earns a point.
+2. Resolving Raffles:
+   - After a Raffle is concluded, creator passes a transaction that lets contract select winners.
+   - The contract fetches the winners.
+   - Everybody csn see the winners.
 
-3. Querying Data:
-   - Users can retrieve all bets.
-   - The contract also allows querying of points, either for all players or for a specific player.
-
-4. Getting Points:
-   - Points are awarded for correct bets.
-   - Users can check their total points or the points of any player.
-
-## 🧪 Tests
-
-This project includes integration tests that interact with the contract deployed in the Studio. These tests cover the main functionalities of the Football Bets contract:
-
-1. Creating a bet
-2. Resolving a bet
-3. Querying bets for a player
-4. Querying points for a player
-
-The tests simulate real-world interactions with the contract, ensuring that it behaves correctly under various scenarios. They use the GenLayer Studio to deploy and interact with the contract, providing a comprehensive check of the contract's functionality in a controlled environment.
-
-To run the tests, use the `gltest` command as mentioned in the "Steps to run this example" section.
 
 
 ## 💬 Community
