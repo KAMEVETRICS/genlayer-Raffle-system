@@ -6,6 +6,7 @@ export interface Raffle {
   id: string;
   creator: string;
   reason: string;
+  prize: string;
   num_winners: number;
   created_at: string;
   end_date: string;
@@ -34,6 +35,7 @@ export interface TransactionReceipt {
 
 export interface CreateRaffleParams {
   reason: string;
+  prize: string;
   numWinners: number;
   endDate: string;
 }

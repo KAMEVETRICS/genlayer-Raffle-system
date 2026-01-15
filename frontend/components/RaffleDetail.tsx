@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2, Trophy, Users, Calendar, Clock, Sparkles, Eye, EyeOff, AlertCircle } from "lucide-react";
+import { Loader2, Trophy, Users, Calendar, Clock, Sparkles, Eye, EyeOff, AlertCircle, Award } from "lucide-react";
 import { useRaffle, useParticipants, useSelectWinners } from "@/lib/hooks/useRaffle";
 import { useWallet } from "@/lib/genlayer/wallet";
 import { AddressDisplay } from "./AddressDisplay";
@@ -116,6 +116,15 @@ export function RaffleDetail({ raffleId, isOpen, onClose }: RaffleDetailProps) {
           <div className="p-4 bg-accent/10 rounded-lg border border-accent/20">
             <p className="text-sm font-medium text-accent mb-2">Raffle Theme</p>
             <p className="text-foreground">{raffle.reason}</p>
+          </div>
+
+          {/* Prize */}
+          <div className="p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
+            <p className="text-sm font-medium text-yellow-400 mb-2 flex items-center gap-2">
+              <Award className="w-4 h-4" />
+              Prize
+            </p>
+            <p className="text-foreground font-semibold">{raffle.prize}</p>
           </div>
 
           {/* Stats */}

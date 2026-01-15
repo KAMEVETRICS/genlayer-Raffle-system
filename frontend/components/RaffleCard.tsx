@@ -8,6 +8,7 @@ import {
   Clock,
   Loader2,
   Sparkles,
+  Award,
 } from "lucide-react";
 import { useWallet } from "@/lib/genlayer/wallet";
 import {
@@ -86,9 +87,13 @@ export function RaffleCard({ raffle, onViewDetails }: RaffleCardProps) {
                 Active
               </Badge>
             )}
-            <p className="text-sm text-foreground line-clamp-3">
+            <p className="text-sm text-foreground line-clamp-2">
               {raffle.reason}
             </p>
+            <div className="flex items-center gap-1 mt-2 text-accent">
+              <Award className="w-4 h-4" />
+              <span className="text-sm font-medium">{raffle.prize}</span>
+            </div>
           </div>
         </div>
 

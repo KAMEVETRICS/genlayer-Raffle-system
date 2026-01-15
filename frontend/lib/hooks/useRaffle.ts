@@ -169,10 +169,12 @@ export function useCreateRaffle() {
   const mutation = useMutation({
     mutationFn: async ({
       reason,
+      prize,
       numWinners,
       endDate,
     }: {
       reason: string;
+      prize: string;
       numWinners: number;
       endDate: string;
     }) => {
@@ -187,7 +189,7 @@ export function useCreateRaffle() {
         );
       }
       setIsCreating(true);
-      return contract.createRaffle(reason, numWinners, endDate);
+      return contract.createRaffle(reason, prize, numWinners, endDate);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["raffles"] });

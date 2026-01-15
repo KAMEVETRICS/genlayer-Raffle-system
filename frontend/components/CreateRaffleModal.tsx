@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Loader2, Calendar, Gift, Users } from "lucide-react";
+import { Plus, Loader2, Calendar, Gift, Users, Award } from "lucide-react";
 import { useCreateRaffle } from "@/lib/hooks/useRaffle";
 import { useWallet } from "@/lib/genlayer/wallet";
 import { error } from "@/lib/utils/toast";
@@ -23,11 +23,13 @@ export function CreateRaffleModal() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [reason, setReason] = useState("");
+  const [prize, setPrize] = useState("");
   const [numWinners, setNumWinners] = useState(1);
   const [endDate, setEndDate] = useState("");
 
   const [errors, setErrors] = useState({
     reason: "",
+    prize: "",
     numWinners: "",
     endDate: "",
   });
@@ -42,6 +44,7 @@ export function CreateRaffleModal() {
   const validateForm = (): boolean => {
     const newErrors = {
       reason: "",
+      prize: "",
       numWinners: "",
       endDate: "",
     };
@@ -50,6 +53,12 @@ export function CreateRaffleModal() {
       newErrors.reason = "Raffle reason/theme is required";
     } else if (reason.length > 500) {
       newErrors.reason = "Reason must be less than 500 characters";
+    }
+
+    if (!prize.trim()) {
+      newErrors.prize = "Prize is required";
+    } else if (prize.length > 200) {
+      newErrors.prize = "Prize must be less than 200 characters";
     }
 
     if (numWinners < 1) {
@@ -85,6 +94,7 @@ export function CreateRaffleModal() {
 
     createRaffle({
       reason,
+      prize,
       numWinners,
       endDate,
     });
@@ -92,9 +102,10 @@ export function CreateRaffleModal() {
 
   const resetForm = () => {
     setReason("");
+    setPrize("");
     setNumWinners(1);
     setEndDate("");
-    setErrors({ reason: "", numWinners: "", endDate: "" });
+    setErrors({ reason: "", prize: "", numWinners: "", endDate: "" });
   };
 
   const handleOpenChange = (open: boolean) => {
@@ -171,6 +182,29 @@ export function CreateRaffleModal() {
                 {reason.length}/500
               </span>
             </div>
+          </div>
+
+          {/* Prize */}
+          <div className="space-y-2">
+            <Label htmlFor="prize" className="flex items-center gap-2">
+              <Award className="w-4 h-4 !text-white" />
+              What&apos;s Up for Grabs?
+            </Label>
+            <Input
+              id="prize"
+              type="text"
+              value={prize}
+              onChange={(e) => {
+                setPrize(e.target.value);
+                setErrors({ ...errors, prize: "" });
+              }}
+              placeholder="e.g., $100 USDT, NFT, Merch, etc."
+              className={errors.prize ? "border-destructive" : ""}
+              maxLength={200}
+            />
+            {errors.prize && (
+              <p className="text-xs text-destructive">{errors.prize}</p>
+            )}
           </div>
 
           {/* Number of Winners */}

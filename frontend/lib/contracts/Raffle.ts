@@ -219,12 +219,14 @@ class RaffleContract {
   /**
    * Create a new raffle
    * @param reason - Reason/theme for the raffle
+   * @param prize - What's up for grabs
    * @param numWinners - Number of winners
    * @param endDate - End date for the raffle
    * @returns Transaction receipt
    */
   async createRaffle(
     reason: string,
+    prize: string,
     numWinners: number,
     endDate: string
   ): Promise<TransactionReceipt> {
@@ -234,7 +236,7 @@ class RaffleContract {
       const txHash = await this.client.writeContract({
         address: this.contractAddress,
         functionName: "create_raffle",
-        args: [reason, numWinners, createdAt, endDate],
+        args: [reason, prize, numWinners, createdAt, endDate],
         value: BigInt(0),
       });
 

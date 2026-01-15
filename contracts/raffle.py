@@ -20,6 +20,7 @@ class Raffle:
     id: str
     creator: Address
     reason: str
+    prize: str
     num_winners: u32
     created_at: str
     end_date: str
@@ -85,6 +86,7 @@ IMPORTANT: Respond ONLY with valid JSON, no other text. The winners array must c
     def create_raffle(
         self,
         reason: str,
+        prize: str,
         num_winners: int,
         created_at: str,
         end_date: str
@@ -94,6 +96,9 @@ IMPORTANT: Respond ONLY with valid JSON, no other text. The winners array must c
 
         if not reason.strip():
             raise Exception("Reason cannot be empty")
+
+        if not prize.strip():
+            raise Exception("Prize cannot be empty")
 
         if not end_date.strip():
             raise Exception("End date cannot be empty")
@@ -105,6 +110,7 @@ IMPORTANT: Respond ONLY with valid JSON, no other text. The winners array must c
             id=raffle_id,
             creator=gl.message.sender_address,
             reason=reason,
+            prize=prize,
             num_winners=num_winners,
             created_at=created_at,
             end_date=end_date,
@@ -202,6 +208,7 @@ IMPORTANT: Respond ONLY with valid JSON, no other text. The winners array must c
                 "id": raffle.id,
                 "creator": raffle.creator.as_hex,
                 "reason": raffle.reason,
+                "prize": raffle.prize,
                 "num_winners": raffle.num_winners,
                 "created_at": raffle.created_at,
                 "end_date": raffle.end_date,
@@ -227,6 +234,7 @@ IMPORTANT: Respond ONLY with valid JSON, no other text. The winners array must c
             "id": raffle.id,
             "creator": raffle.creator.as_hex,
             "reason": raffle.reason,
+            "prize": raffle.prize,
             "num_winners": raffle.num_winners,
             "created_at": raffle.created_at,
             "end_date": raffle.end_date,
