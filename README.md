@@ -6,15 +6,14 @@
 [![GitHub star chart](https://img.shields.io/github/stars/yeagerai/genlayer-project-boilerplate?style=social)](https://star-history.com/#yeagerai/genlayer-js)
 
 ## 👀 About
-This project includes the boilerplate code for a GenLayer use case implementation, specifically a football bets game.
+This project includes the boilerplate code for a GenLayer use case implementation, A Raffle system.
 
 ## 📦 What's included
 - Basic requirements to deploy and test your intelligent contracts locally
 - Configuration file template
 <!-- - Test functions to write complete end-to-end tests -->
-- An example of an intelligent contract (Football Bets)
-- Example end-to-end tests for the contract provided
-- A production-ready Next.js 15 frontend with TypeScript, TanStack Query, and Radix UI
+- An example of an intelligent contract (Raffle system)
+
 
 ## 🛠️ Requirements
 - A running GenLayer Studio (Install from [Docs](https://docs.genlayer.com/developers/intelligent-contracts/tooling-setup#using-the-genlayer-studio) or work with the hosted version of [GenLayer Studio](https://studio.genlayer.com/)). If you are working locally, this repository code does not need to be located in the same directory as the Genlayer Studio.
@@ -23,7 +22,7 @@ This project includes the boilerplate code for a GenLayer use case implementatio
 ## 🚀 Steps to run this example
 
 ### 1. Deploy the contract
-   Deploy the contract from `/contracts/football_bets.py` using the GenLayer CLI:
+   Deploy the contract from `/contracts/raffle.py` using the GenLayer CLI:
    1. Choose the network that you want to use (studionet, localnet, or tesnet-*): `genlayer network`
    2. Execute the deploy command `genlayer deploy`. This command is going to execute the deploy script located in `/deploy/deployScript.ts`
 
