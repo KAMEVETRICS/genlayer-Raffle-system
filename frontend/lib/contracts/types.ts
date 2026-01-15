@@ -1,23 +1,28 @@
 /**
- * TypeScript types for GenLayer Football Betting contract
+ * TypeScript types for GenLayer Raffle contract
  */
 
-export interface Bet {
+export interface Raffle {
   id: string;
-  game_date: string;
-  team1: string;
-  team2: string;
-  predicted_winner: string;
-  has_resolved: boolean;
-  real_winner?: string;
-  real_score?: string;
-  resolution_url?: string;
-  owner: string;
+  creator: string;
+  reason: string;
+  num_winners: number;
+  created_at: string;
+  end_date: string;
+  is_resolved: boolean;
+  winners: string[];
 }
 
-export interface LeaderboardEntry {
-  address: string;
-  points: number;
+export interface Participant {
+  username: string;
+  reason: string; // "[Hidden until resolved]" if raffle not resolved
+  entry_timestamp: string;
+  is_winner: boolean;
+}
+
+export interface RaffleWithParticipants extends Raffle {
+  participants: Record<string, Participant>;
+  participantCount: number;
 }
 
 export interface TransactionReceipt {
@@ -27,7 +32,28 @@ export interface TransactionReceipt {
   [key: string]: any;
 }
 
-export interface BetFilters {
-  resolved?: boolean;
-  owner?: string;
+export interface CreateRaffleParams {
+  reason: string;
+  numWinners: number;
+  endDate: string;
+}
+
+export interface EnterRaffleParams {
+  raffleId: string;
+  username: string;
+  reason: string;
+}
+
+/**
+ * Check if a raffle has ended based on its end_date
+ * Returns true if the current time is past the end_date
+ */
+export function isRaffleEnded(endDate: string): boolean {
+  try {
+    const end = new Date(endDate);
+    const now = new Date();
+    return now > end;
+  } catch {
+    return false;
+  }
 }
